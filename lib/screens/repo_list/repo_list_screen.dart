@@ -8,7 +8,6 @@ import '../../blocs/repo_list/repo_list_bloc.dart';
 import '../../blocs/repo_list/repo_list_event.dart';
 import '../../blocs/repo_list/repo_list_state.dart';
 import '../../repositories/github_repository.dart';
-import '../../models/repo_model.dart';
 import '../login/login_screen.dart';
 import '../repo_detail/repo_detail_screen.dart';
 
@@ -91,7 +90,6 @@ class RepoListScreen extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      // Repo Name
                                       Text(
                                         repo.name,
                                         style: const TextStyle(
@@ -100,10 +98,7 @@ class RepoListScreen extends StatelessWidget {
                                           color: Colors.black87,
                                         ),
                                       ),
-
                                       const SizedBox(height: 8),
-
-                                      // Default Branch
                                       Row(
                                         children: [
                                           const Icon(Icons.source, size: 16, color: Colors.grey),

@@ -65,7 +65,6 @@ class _LoginScreenState extends State<LoginScreen> {
           if (state is AuthError) {
             _showError(state.message);
           } else if (state is AuthAuthenticated) {
-            // ✅ Navigate after successful login
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (_) => const RepoListScreen()),
@@ -76,7 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
           if (state is AuthLoading) {
             return const Center(child: CircularProgressIndicator());
           }
-
           return Center(
             child: ElevatedButton.icon(
               onPressed: _launchGitHubLogin,
