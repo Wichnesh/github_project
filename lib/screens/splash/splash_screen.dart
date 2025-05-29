@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../blocs/auth/auth_bloc.dart';
 import '../../blocs/auth/auth_event.dart';
 import '../../blocs/auth/auth_state.dart';
+import '../../blocs/repo_list/repo_list_bloc.dart';
+import '../../repositories/github_repository.dart';
 import '../login/login_screen.dart';
 import '../repo_list/repo_list_screen.dart';
 
@@ -19,8 +21,14 @@ class SplashScreen extends StatelessWidget {
           if (state is AuthAuthenticated) {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (_) => const RepoListScreen()),
+              MaterialPageRoute(
+                builder: (_) => BlocProvider(
+                  create: (_) => RepoListBloc(GitHubRepository()),
+                  child: const RepoListScreen(),
+                ),
+              ),
             );
+
           } else if (state is AuthUnauthenticated) {
             Navigator.pushReplacement(
               context,
